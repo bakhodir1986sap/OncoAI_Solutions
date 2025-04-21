@@ -1,0 +1,46 @@
+﻿@page
+@model CreateModel
+@{
+    ViewData["Title"] = "Добавить пациента";
+}
+
+<div class="container">
+    <img src="~/images/logo.png" alt="Логотип OncoAI" class="logo" />
+    <h1>@ViewData["Title"]</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Patient.Name"></label>
+            <input asp-for="Patient.Name" class="form-control" />
+            <span asp-validation-for="Patient.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Patient.Age"></label>
+            <input asp-for="Patient.Age" class="form-control" type="number" />
+            <span asp-validation-for="Patient.Age" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Patient.Gender"></label>
+            <select asp-for="Patient.Gender" class="form-control">
+                <option value="">Выберите пол</option>
+                <option value="Мужской">Мужской</option>
+                <option value="Женский">Женский</option>
+                <option value="Другой">Другой</option>
+            </select>
+            <span asp-validation-for="Patient.Gender" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Patient.Symptoms"></label>
+            <input asp-for="Patient.Symptoms" class="form-control" />
+            <span asp-validation-for="Patient.Symptoms" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="MedicalImage">Загрузите медицинское изображение (МРТ/КТ):</label>
+            <input type="file" asp-for="MedicalImage" class="form-control" />
+            <span asp-validation-for="MedicalImage" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <a asp-page="Index" class="btn btn-secondary">Назад к списку</a>
+    </form>
+</div>

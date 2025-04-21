@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using OncoAIApp.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -35,6 +38,12 @@ app.UseSession();
 // Use authentication
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Redirect root URL to Login page
+app.MapGet("/", async context =>
+{
+    context.Response.Redirect("/Login");
+});
 
 app.MapRazorPages();
 

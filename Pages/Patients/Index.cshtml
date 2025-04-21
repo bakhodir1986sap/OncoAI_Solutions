@@ -1,0 +1,40 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Управление пациентами";
+}
+
+<div class="container">
+    <img src="~/images/logo.png" alt="Логотип OncoAI" class="logo" />
+    <h1>@ViewData["Title"]</h1>
+    <a class="btn btn-primary" asp-page="Create">Добавить</a>
+    <a asp-page="/Logout" class="btn btn-secondary">Выйти</a>
+    <form method="post">
+        <button type="submit" name="action" value="delete" class="btn btn-danger">Удалить</button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Выбрать</th>
+                    <th>Имя пациента</th>
+                    <th>Возраст</th>
+                    <th>Пол</th>
+                    <th>Симптомы</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var patient in Model.Patients)
+                {
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="selectedPatients" value="@patient.Id" />
+                        </td>
+                        <td>@patient.Name</td>
+                        <td>@patient.Age</td>
+                        <td>@patient.Gender</td>
+                        <td>@patient.Symptoms</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+</div>
